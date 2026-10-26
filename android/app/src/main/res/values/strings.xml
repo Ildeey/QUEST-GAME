@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Рудная палата</string>
+    <string name="title_activity_main">Рудная палата</string>
+    <string name="package_name">ru.rudnaya.palata</string>
+    <string name="custom_url_scheme">ru.rudnaya.palata</string>
+</resources>
