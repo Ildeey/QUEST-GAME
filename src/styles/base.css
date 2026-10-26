@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+/* Replace local() with url('/fonts/…woff2') when museum font files are supplied. */
+@font-face {
+  font-family: "Oswald";
+  src: local("Oswald");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: local("Nunito");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: local("Caveat");
+  font-display: swap;
+}
+@theme {
+  --font-display: "Oswald", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Nunito", Verdana, sans-serif;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  #root {
+    width: 800px;
+    height: 1200px;
+    overflow: hidden;
+  }
+  body {
+    margin: 0;
+    min-width: 800px;
+    min-height: 1200px;
+    font-family: var(--font-body);
+    font-size: 18px;
+  }
+  button {
+    font: inherit;
+    color: inherit;
+    touch-action: manipulation;
+  }
+}
+:root {
+  --ink: #28273e;
+  --cream: #f5f4fa;
+  --pink: #F9A8C9;
+  --green: #6750df;
+  --yellow: #FFD23F;
+  --blue: #3B6FD8;
+  --orange: #FF7A3D;
+  --purple: #7860e9;
+  --error: #D9480F;
+  --surface: white;
+  --muted: #76758b;
+  --line: #e8e5f1;
+  --lift: 0 10px 30px #3026580b;
+  --lift-high: 0 20px 50px #48338a18;
+  --font-display: "Nunito",system-ui,sans-serif;
+  --font-body: "Nunito",system-ui,sans-serif;
+}
+@media (prefers-reduced-motion:reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
