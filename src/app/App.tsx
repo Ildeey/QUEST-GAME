@@ -986,6 +986,7 @@ function Quest2({
   setSuccess: (v: boolean) => void
 }) {
   const [drag, setDrag] = useState<number | null>(null)
+  const [notesOpen, setNotesOpen] = useState(false)
   const suppressSlotClick = useRef(false)
   const cards = useMemo(
     () =>
@@ -1136,6 +1137,13 @@ function Quest2({
             {content.app.guide}
           </Button>
         )}
+        <Button
+          tone="orange"
+          className="notes-trigger"
+          onClick={() => setNotesOpen(true)}
+        >
+          ✉ {content.quest1.notesLabel}
+        </Button>
         {state.q2WordMode ? (
           <>
             <Button
@@ -1157,14 +1165,48 @@ function Quest2({
             К вводу слова →
           </Button>
         ) : (
-          <Button
-            disabled={state.q2Slots.length !== 6}
-            onClick={checkOrder}
-          >
+          <Button disabled={state.q2Slots.length !== 6} onClick={checkOrder}>
             {content.quest2.checkOrder}
           </Button>
         )}
       </div>
+      {notesOpen && (
+        <div className="note-backdrop" onClick={() => setNotesOpen(false)}>
+          <section
+            className="field-notes"
+            role="dialog"
+            aria-modal="true"
+            aria-label={content.quest1.notesLabel}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="display">{content.quest1.notesLabel}</div>
+            <p>{content.quest1.notesIntro}</p>
+            <div className="notes-grid quest2-notes-grid">
+              {content.quest2.notes.map((note, i) => {
+                const card = content.quest2.cards.find(
+                  (item) => item.id === note.cardId,
+                )!
+                return (
+                  <article key={note.cardId} className="loose-note quest2-note">
+                    <span>{i + 1}</span>
+                    <div className="quest2-note-mark">
+                      <ShapeMark
+                        shape={card.shape}
+                        color={card.color}
+                        small
+                      />
+                      <b style={{ color: card.color }}>{card.letter}</b>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+            <Button onClick={() => setNotesOpen(false)}>
+              {content.quest1.closeNotes} →
+            </Button>
+          </section>
+        </div>
+      )}
     </main>
   )
 }

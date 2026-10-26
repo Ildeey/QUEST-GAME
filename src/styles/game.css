@@ -1817,6 +1817,30 @@ body {
   padding: 22px 4px 28px;
   grid-template-columns: repeat(2, 1fr);
 }
+.quest2-notes-grid {
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.quest2-note {
+  min-height: 145px;
+  padding: 34px 14px 14px;
+  font-size: 16px;
+}
+.quest2-note-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.quest2-note-mark .shape {
+  width: 24px;
+  height: 24px;
+}
+.quest2-note-mark b {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
 
 .customer small {
   margin-top: 3px;
